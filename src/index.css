@@ -1,0 +1,19 @@
+html,
+body {
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+body.dark {
+    --nav-bg: #020617;
+    background-color: #020617;
+    color: #f8fafc;
+}
+
+body.light {
+    --nav-bg: #f8fafc;
+    background-color: #f8fafc;
+    color: #020617;
+}

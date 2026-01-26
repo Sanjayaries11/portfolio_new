@@ -1,7 +1,9 @@
+import styles from "../css/Hero.module.css";
+
 export default function Hero() {
     return (
-        <section >
-            <h1>Welcome</h1>
+        <section className={styles.home}>
+
         </section>
     )
 }

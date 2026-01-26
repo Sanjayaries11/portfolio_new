@@ -1,0 +1,192 @@
+/* Navbar container */
+.navbar {
+    height: 65px;
+    display: flex;
+    align-items: center;
+    padding: 0 40px;
+    position: sticky;
+    top: 0;
+    background-color: var(--nav-bg);
+    z-index: 1000;
+}
+
+
+/* Logo */
+.logo {
+    font-size: 22px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+/* Desktop Menu */
+.menu {
+    display: flex;
+    align-items: center;
+    gap: 45px;
+    list-style: none;
+    margin-left: auto;
+    margin-right: 20px;
+}
+
+/* Menu Links */
+.menu li a {
+    text-decoration: none;
+    color: inherit;
+    font-size: 18px;
+    position: relative;
+    padding-bottom: 6px;
+}
+
+/* Underline animation */
+.menu li a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0%;
+    height: 2px;
+    background-color: #38bdf8;
+    transition: width 0.3s ease;
+}
+
+.menu li a:hover::after,
+.menu li a.active::after {
+    width: 100%;
+}
+
+.menu li a.active {
+    color: #38bdf8;
+}
+
+/* Hamburger menu icon */
+.menuIcon {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: inherit;
+    /* Align vertically center */
+    align-self: center;
+}
+
+/* Theme toggle button */
+.themeToggle {
+    cursor: pointer;
+    font-size: 22px;
+    color: #facc15;
+    margin-left: 15px;
+    align-self: center;
+    user-select: none;
+}
+
+
+/* Wrap hamburger + theme toggle on right side */
+.rightIcons {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    /* space between hamburger & toggle */
+}
+
+/* Navbar general styles */
+.navbar {
+    width: 100%;
+    height: 65px;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: var(--nav-bg);
+    justify-content: space-between;
+    /* spread logo and right icons */
+}
+
+/* Floating theme toggle */
+.themeToggleFloating {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    top: 25%;
+    /* vertically center */
+    right: 10px;
+    /* distance from right edge */
+    transform: translateY(-50%);
+    background-color: var(--nav-bg);
+    border-radius: 50%;
+    padding: 10px;
+    font-size: 22px;
+    color: #facc15;
+    /* visible on both dark/light */
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1500;
+    /* above navbar and menu */
+    user-select: none;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.themeToggleFloating:hover {
+    background-color: #facc15;
+    color: var(--nav-bg);
+}
+
+/* Remove previous .themeToggle inside navbar */
+.themeToggle {
+    display: none;
+    /* not needed now */
+}
+
+
+/* Mobile specific */
+@media (max-width: 900px) {
+    .navbar {
+        padding: 0 15px;
+    }
+
+    /* On mobile, menu is full screen so no margin */
+    .menu {
+        margin: 0;
+    }
+
+    .menuIcon {
+        font-size: 24px;
+        cursor: pointer;
+        color: inherit;
+    }
+
+    .themeToggle {
+        font-size: 22px;
+        cursor: pointer;
+        color: #facc15;
+        user-select: none;
+    }
+}
+
+
+/* Mobile styles */
+@media (max-width: 900px) {
+    .menu {
+        position: fixed;
+        top: 65px;
+        left: 0;
+        width: 100%;
+        height: calc(100vh - 65px);
+        background-color: var(--nav-bg);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 35px;
+        transform: translateX(100%);
+        transition: transform 0.3s ease;
+        margin: 0;
+    }
+
+    .menu.active {
+        transform: translateX(0);
+    }
+
+    .menuIcon {
+        display: block;
+    }
+}

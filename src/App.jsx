@@ -1,16 +1,23 @@
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css'
-import Contact from './components/Contact'
-import Hero from './components/Hero'
-import Navbar from './components/Navbar'
+import Navbar from './components/Navbar';
+import Hero from './components/Hero';
+import About from './components/About';
+import Contact from './components/Contact';
+import Service from './components/Service';
 
 function App() {
 
   return (
-    <>
+    <BrowserRouter>
       <Navbar />
-      <Hero />
-      <Contact />
-    </>
+      <Routes>
+        <Route path='/' element={<Hero />} />
+        <Route path='/service' element={<Service />} />
+        <Route path='/about' element={<About />} />
+        <Route path='/contact' element={<Contact />} />
+      </Routes>
+    </BrowserRouter>
   )
 }
 
