@@ -5,6 +5,7 @@ import Hero from './components/Hero';
 import About from './components/About';
 import Contact from './components/Contact';
 import Service from './components/Service';
+import Footer from './components/Footer';
 
 function App() {
 
@@ -17,6 +18,7 @@ function App() {
         <Route path='/about' element={<About />} />
         <Route path='/contact' element={<Contact />} />
       </Routes>
+      <Footer />
     </BrowserRouter>
   )
 }

@@ -1,5 +1,16 @@
 :root {
     font-family: 'Space Grotesk', system-ui, Avenir, Helvetica, Arial, sans-serif;
+    /* Base Colors */
+    --black: #000000;
+    --white: #ffffff;
+    --gray: #cccccc;
+
+    /* Brand Colors */
+    --green: #628141;
+    --blue: #4da3ff;
+
+    --carbon-black: #232323;
+    --border-dark: #1a1a1a;
 }
 
 *,
@@ -18,13 +29,13 @@ body {
 }
 
 body.dark {
-    --nav-bg: #232323;
-    background-color: #232323;
-    color: #f8fafc;
+    --nav-bg: var(--black);
+    background-color: var(--gray);
+    color: var(--white);
 }
 
 body.light {
-    --nav-bg: #f8fafc;
-    background-color: #f8fafc;
-    color: #020617;
+    --nav-bg: var(--white);
+    background-color: var(--gray);
+    color: var(--black);
 }
