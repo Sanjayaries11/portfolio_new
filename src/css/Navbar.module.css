@@ -1,34 +1,55 @@
-/* Navbar container */
+/* =========================
+   Navbar Container
+========================= */
 .navbar {
+    width: 100%;
     height: 65px;
+    padding: 0 40px;
     display: flex;
     align-items: center;
-    padding: 0 40px;
+    justify-content: space-between;
     position: sticky;
     top: 0;
-    background-color: var(--nav-bg);
     z-index: 1000;
+    background-color: var(--nav-bg);
 }
 
+/* Sticky effect (optional visual hook) */
+.sticky {
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+}
 
-/* Logo */
+/* =========================
+   Logo
+========================= */
 .logo {
     font-size: 22px;
     font-weight: 700;
     white-space: nowrap;
 }
 
-/* Desktop Menu */
+/* =========================
+   Right Section (menu + icons)
+========================= */
+.rightSection {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+/* =========================
+   Desktop Menu
+========================= */
 .menu {
     display: flex;
     align-items: center;
     gap: 45px;
     list-style: none;
-    margin-left: auto;
-    margin-right: 20px;
+    margin: 0;
+    padding: 0;
 }
 
-/* Menu Links */
+/* Menu links */
 .menu li a {
     text-decoration: none;
     color: inherit;
@@ -58,114 +79,77 @@
     color: #38bdf8;
 }
 
-/* Hamburger menu icon */
+/* =========================
+   Theme Toggle
+========================= */
+/* =========================
+   Theme Toggle Animation
+========================= */
+.themeToggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 22px;
+    color: #facc15;
+    user-select: none;
+    transition: transform 0.4s ease, opacity 0.3s ease;
+}
+
+/* Sun animation */
+.rotateSun {
+    animation: sunSpin 0.6s ease forwards;
+}
+
+/* Moon animation */
+.rotateMoon {
+    animation: moonSpin 0.6s ease forwards;
+}
+
+@keyframes sunSpin {
+    0% {
+        transform: rotate(-90deg) scale(0.5);
+        opacity: 0;
+    }
+
+    100% {
+        transform: rotate(0deg) scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes moonSpin {
+    0% {
+        transform: rotate(90deg) scale(0.5);
+        opacity: 0;
+    }
+
+    100% {
+        transform: rotate(0deg) scale(1);
+        opacity: 1;
+    }
+}
+
+
+/* =========================
+   Hamburger Icon
+========================= */
 .menuIcon {
     display: none;
     font-size: 24px;
     cursor: pointer;
     color: inherit;
-    /* Align vertically center */
-    align-self: center;
 }
 
-/* Theme toggle button */
-.themeToggle {
-    cursor: pointer;
-    font-size: 22px;
-    color: #facc15;
-    margin-left: 15px;
-    align-self: center;
-    user-select: none;
-}
-
-
-/* Wrap hamburger + theme toggle on right side */
-.rightIcons {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    /* space between hamburger & toggle */
-}
-
-/* Navbar general styles */
-.navbar {
-    width: 100%;
-    height: 65px;
-    padding: 0 20px;
-    display: flex;
-    align-items: center;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    background-color: var(--nav-bg);
-    justify-content: space-between;
-    /* spread logo and right icons */
-}
-
-/* Floating theme toggle */
-.themeToggleFloating {
-    position: fixed;
-    display: flex;
-    justify-content: center;
-    top: 25%;
-    /* vertically center */
-    right: 10px;
-    /* distance from right edge */
-    transform: translateY(-50%);
-    background-color: var(--nav-bg);
-    border-radius: 50%;
-    padding: 10px;
-    font-size: 22px;
-    color: #facc15;
-    /* visible on both dark/light */
-    cursor: pointer;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-    z-index: 1500;
-    /* above navbar and menu */
-    user-select: none;
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.themeToggleFloating:hover {
-    background-color: #facc15;
-    color: var(--nav-bg);
-}
-
-/* Remove previous .themeToggle inside navbar */
-.themeToggle {
-    display: none;
-    /* not needed now */
-}
-
-
-/* Mobile specific */
+/* =========================
+   Mobile Styles
+========================= */
 @media (max-width: 900px) {
     .navbar {
-        padding: 0 15px;
+        padding: 0 20px;
     }
 
-    /* On mobile, menu is full screen so no margin */
-    .menu {
-        margin: 0;
-    }
-
-    .menuIcon {
-        font-size: 24px;
-        cursor: pointer;
-        color: inherit;
-    }
-
-    .themeToggle {
-        font-size: 22px;
-        cursor: pointer;
-        color: #facc15;
-        user-select: none;
-    }
-}
-
-
-/* Mobile styles */
-@media (max-width: 900px) {
+    /* Full screen menu */
     .menu {
         position: fixed;
         top: 65px;
@@ -179,14 +163,20 @@
         gap: 35px;
         transform: translateX(100%);
         transition: transform 0.3s ease;
-        margin: 0;
+        z-index: 999;
     }
 
     .menu.active {
         transform: translateX(0);
     }
 
+    /* Show hamburger */
     .menuIcon {
         display: block;
+    }
+
+    /* Slightly bigger toggle on mobile */
+    .themeToggle {
+        font-size: 24px;
     }
 }

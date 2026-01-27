@@ -23,12 +23,25 @@ export default function Navbar() {
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
-    return (
-        <>
-            {/* Navbar */}
-            <nav className={`${styles.navbar} ${sticky ? styles.sticky : ""}`}>
-                <div className={styles.logo}>LOGO</div>
+    useEffect(() => {
+        if (menuOpen) {
+            document.body.style.overflow = "hidden";
+        } else {
+            document.body.style.overflow = "auto";
+        }
 
+        return () => {
+            document.body.style.overflow = "auto";
+        };
+    }, [menuOpen]);
+
+
+    return (
+        <nav className={`${styles.navbar} ${sticky ? styles.sticky : ""}`}>
+            <div className={styles.logo}>LOGO</div>
+
+            {/* Menu + Theme toggle */}
+            <div className={styles.rightSection}>
                 <ul className={`${styles.menu} ${menuOpen ? styles.active : ""}`}>
                     <li>
                         <NavLink to="/" end onClick={() => setMenuOpen(false)}>
@@ -52,21 +65,26 @@ export default function Navbar() {
                     </li>
                 </ul>
 
-                {/* Only Hamburger on right */}
-                <div className={styles.menuIcon} onClick={() => setMenuOpen(!menuOpen)}>
+                {/* Theme toggle AFTER menu */}
+                <div
+                    className={`${styles.themeToggle} ${darkMode ? styles.rotateSun : styles.rotateMoon
+                        }`}
+                    onClick={() => setDarkMode(!darkMode)}
+                    title="Toggle theme"
+                    aria-label="Toggle theme"
+                >
+                    {darkMode ? <FaSun /> : <FaMoon />}
+                </div>
+
+
+                {/* Hamburger */}
+                <div
+                    className={styles.menuIcon}
+                    onClick={() => setMenuOpen(!menuOpen)}
+                >
                     {menuOpen ? <FaTimes /> : <FaBars />}
                 </div>
-            </nav>
-
-            {/* Floating Theme Toggle (outside navbar, fixed position) */}
-            <div
-                className={styles.themeToggleFloating}
-                onClick={() => setDarkMode(!darkMode)}
-                title="Toggle theme"
-                aria-label="Toggle theme"
-            >
-                {darkMode ? <FaSun /> : <FaMoon />}
             </div>
-        </>
+        </nav>
     );
 }

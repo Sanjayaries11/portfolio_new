@@ -1,0 +1,77 @@
+.button {
+    padding: 15px 45px;
+    background-color: #232323;
+    border: none;
+    font-size: 18px;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.button span {
+    color: rgb(255, 255, 255);
+    position: relative;
+    transition: 0.5s;
+    transition-delay: 0.5s;
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 600;
+    z-index: 2;
+}
+
+/* Line elements */
+.button div {
+    position: absolute;
+    background-color: #a8bba3;
+    transition: 0.5s;
+}
+
+/* Horizontal lines */
+.button .top,
+.button .bottom {
+    width: 15px;
+    height: 5px;
+}
+
+.button .top {
+    top: 0;
+    left: 0;
+}
+
+.button .bottom {
+    bottom: 0;
+    right: 0;
+}
+
+/* Vertical lines */
+.button .left,
+.button .right {
+    width: 5px;
+    height: 15px;
+}
+
+.button .left {
+    top: 0;
+    left: 0;
+}
+
+.button .right {
+    bottom: 0;
+    right: 0;
+}
+
+/* Hover animation */
+.button:hover .top,
+.button:hover .bottom {
+    width: 100%;
+}
+
+.button:hover .left,
+.button:hover .right {
+    height: 100%;
+}
+
+.button:hover span {
+    color: #ffffff;
+}
