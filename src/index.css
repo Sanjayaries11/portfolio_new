@@ -3,12 +3,15 @@
     /* Base Colors */
     --black: #000000;
     --white: #ffffff;
-    --gray: #cccccc;
-
+    --gray: #d3d3d3;
+    --lavender: #e6e6fa;
+    --ivory: #fffff0;
+    --red: #e62753;
     /* Brand Colors */
     --green: #628141;
+    --smoke-green: #4B5C4B;
     --blue: #4da3ff;
-
+    --jet-black: #171717;
     --carbon-black: #232323;
     --border-dark: #1a1a1a;
 }

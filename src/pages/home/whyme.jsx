@@ -1,4 +1,5 @@
 import style from "./css/Whyme.module.css";
+import { FaComments, FaClock, FaCheckCircle } from "react-icons/fa";
 
 export default function Whyme() {
     return (
@@ -8,16 +9,19 @@ export default function Whyme() {
 
                 <div className={style.cards}>
                     <div className={style.card}>
+                        <span className={style.icon}><FaComments /></span>
                         <h3>Clear Communication</h3>
                         <p>You’ll always know what’s happening with your project.</p>
                     </div>
 
                     <div className={style.card}>
+                        <span className={style.icon}><FaClock /></span>
                         <h3>On-Time Delivery</h3>
                         <p>I respect deadlines and deliver as promised.</p>
                     </div>
 
                     <div className={style.card}>
+                        <span className={style.icon}><FaCheckCircle /></span>
                         <h3>Quality First</h3>
                         <p>Clean design, scalable code, and attention to detail.</p>
                     </div>

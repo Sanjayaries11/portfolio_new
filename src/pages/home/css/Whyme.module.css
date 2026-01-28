@@ -1,8 +1,13 @@
+/* =========================
+   SECTION
+   ========================= */
 .whyme {
     padding: 90px 0;
-    background-color: transparent;
 }
 
+/* =========================
+   HEADING
+   ========================= */
 .heading {
     text-align: center;
     font-size: clamp(2rem, 4vw, 2.6rem);
@@ -15,31 +20,72 @@ body.dark .heading {
     color: var(--white);
 }
 
+/* =========================
+   GRID
+   ========================= */
 .cards {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 32px;
 }
 
+/* =========================
+   GLASS CARD
+   ========================= */
 .card {
-    background: var(--white);
-    border: 1px solid var(--gray);
-    padding: 36px 28px;
+    position: relative;
+    padding: 15px 20px;
     border-radius: 16px;
     text-align: center;
-    transition: all 0.35s ease;
+
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+
+    overflow: hidden;
+    z-index: 1;
 }
 
-body.dark .card {
-    background: var(--carbon-black);
-    border-color: var(--border-dark);
+/* =========================
+   SHINE BORDER
+   ========================= */
+.card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 16px;
+    padding: 2px;
+    /* thickness of shine border */
+
+    background: linear-gradient(90deg,
+            transparent 0%,
+            rgba(255, 255, 255, 0.7) 50%,
+            transparent 100%);
+    background-size: 200% 200%;
+    animation: shine 2.5s linear infinite;
+
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+
+    z-index: 2;
 }
 
-.card:hover {
-    transform: translateY(-10px);
-    border-color: var(--green);
+/* =========================
+   ICON
+   ========================= */
+.icon {
+    font-size: 2.4rem;
+    color: var(--green);
+    margin-bottom: 18px;
+    display: inline-flex;
 }
 
+/* =========================
+   TEXT
+   ========================= */
 .card h3 {
     font-size: 1.35rem;
     font-weight: 600;
@@ -59,4 +105,38 @@ body.dark .card h3 {
 
 body.dark .card p {
     color: #cccccc;
+}
+
+/* =========================
+   DARK MODE
+   ========================= */
+body.dark .card {
+    background: rgba(18, 18, 18, 0.25);
+}
+
+/* =========================
+   ANIMATION
+   ========================= */
+@keyframes shine {
+    0% {
+        background-position: -200% 0;
+    }
+
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+/* =========================
+   RESPONSIVE
+   ========================= */
+@media (max-width: 480px) {
+    .card {
+        padding: 36px 22px;
+        border-radius: 14px;
+    }
+
+    .icon {
+        font-size: 2.1rem;
+    }
 }

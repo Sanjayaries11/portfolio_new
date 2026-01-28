@@ -1,0 +1,137 @@
+/* Howwork.module.css */
+
+.container {
+    padding: 4rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: var(--gray);
+    /* Light background behind timeline */
+}
+
+.heading {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 4rem;
+    color: var(--carbon-black);
+    font-family: 'Space Grotesk', system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+
+.timeline {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 40px;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 12px;
+    width: 4px;
+    height: 100%;
+    background-color: var(--green);
+    transform-origin: top;
+}
+
+.timeline-item {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--white);
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 3rem;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    opacity: 0;
+    /* for animation */
+    transform: translateY(30px);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    color: var(--carbon-black);
+    font-family: 'Space Grotesk', system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+
+.timeline-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Circle on the timeline */
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -34px;
+    top: 2rem;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: var(--green);
+    border: 4px solid var(--white);
+    box-sizing: content-box;
+    z-index: 2;
+}
+
+/* Icons on top of the circle */
+.timeline-icon {
+    position: absolute;
+    left: -30px;
+    top: 1.8rem;
+    font-size: 1.2rem;
+    color: var(--white);
+    z-index: 3;
+    pointer-events: none;
+}
+
+/* Headings and paragraphs inside timeline items */
+.timeline-item h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+    color: var(--carbon-black);
+}
+
+.timeline-item p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--carbon-black);
+    margin: 0;
+}
+
+/* Desktop horizontal timeline */
+@media (min-width: 768px) {
+    .timeline {
+        flex-direction: row;
+        justify-content: space-between;
+        padding-left: 0;
+    }
+
+    .timeline::before {
+        width: 100%;
+        height: 4px;
+        top: 12px;
+        left: 0;
+    }
+
+    .timeline-item {
+        flex: 1;
+        margin-bottom: 0;
+        padding: 2rem 1.5rem;
+        text-align: center;
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .timeline-item::before {
+        top: -34px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .timeline-icon {
+        top: -30px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
