@@ -1,0 +1,62 @@
+.whyme {
+    padding: 90px 0;
+    background-color: transparent;
+}
+
+.heading {
+    text-align: center;
+    font-size: clamp(2rem, 4vw, 2.6rem);
+    font-weight: 700;
+    margin-bottom: 60px;
+    color: var(--black);
+}
+
+body.dark .heading {
+    color: var(--white);
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 32px;
+}
+
+.card {
+    background: var(--white);
+    border: 1px solid var(--gray);
+    padding: 36px 28px;
+    border-radius: 16px;
+    text-align: center;
+    transition: all 0.35s ease;
+}
+
+body.dark .card {
+    background: var(--carbon-black);
+    border-color: var(--border-dark);
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    border-color: var(--green);
+}
+
+.card h3 {
+    font-size: 1.35rem;
+    font-weight: 600;
+    margin-bottom: 14px;
+    color: var(--black);
+}
+
+body.dark .card h3 {
+    color: var(--white);
+}
+
+.card p {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #555;
+}
+
+body.dark .card p {
+    color: #cccccc;
+}
