@@ -6,11 +6,12 @@ import Whyme from "../pages/home/whyme";
 export default function Home() {
     return (
         <>
-            <Homebanner />
-            <Whyme />
-            <Howwork />
-            <CTA />
+            <div className="mainContent" >
+                <Homebanner />
+                <Whyme />
+                <Howwork />
+                <CTA />
+            </div>
         </>
-
     )
 }

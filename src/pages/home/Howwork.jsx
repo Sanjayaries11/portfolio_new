@@ -1,93 +1,95 @@
-import React, { useEffect, useRef } from "react";
+import { useState } from "react";
+import {
+    FaLightbulb,
+    FaClipboardList,
+    FaPencilRuler,
+    FaCode,
+    FaRocket
+} from "react-icons/fa";
 import style from "./css/Howwork.module.css";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { FaLightbulb, FaPenFancy, FaCode, FaRocket } from "react-icons/fa";
-
-gsap.registerPlugin(ScrollTrigger);
 
 export default function Howwork() {
-    const timelineRef = useRef(null);
-    const itemsRef = useRef([]);
+    const [active, setActive] = useState(0);
 
     const steps = [
-        { title: "Understand", description: "Discuss goals and requirements.", icon: <FaLightbulb /> },
-        { title: "Plan & Design", description: "Create structure and visuals.", icon: <FaPenFancy /> },
-        { title: "Build", description: "Develop fast, responsive layouts.", icon: <FaCode /> },
-        { title: "Launch", description: "Final review and deployment.", icon: <FaRocket /> },
+        {
+            title: "Discovery",
+            description: "Understanding goals, users, and project requirements.",
+            icon: <FaLightbulb />,
+            color: "#f97316"
+        },
+        {
+            title: "Planning",
+            description: "Defining scope, structure, and technical roadmap.",
+            icon: <FaClipboardList />,
+            color: "#22c55e"
+        },
+        {
+            title: "Design",
+            description: "Designing intuitive and user-focused interfaces.",
+            icon: <FaPencilRuler />,
+            color: "#8b5cf6"
+        },
+        {
+            title: "Development",
+            description: "Building fast, scalable, and responsive solutions.",
+            icon: <FaCode />,
+            color: "#06b6d4"
+        },
+        {
+            title: "Launch",
+            description: "Testing, refining, and deploying the final product.",
+            icon: <FaRocket />,
+            color: "#facc15"
+        }
     ];
 
-    useEffect(() => {
-        const items = itemsRef.current;
-
-        items.forEach((item, index) => {
-            gsap.fromTo(
-                item,
-                { opacity: 0, y: 30 },
-                {
-                    opacity: 1,
-                    y: 0,
-                    duration: 0.8,
-                    delay: index * 0.2,
-                    scrollTrigger: {
-                        trigger: item,
-                        start: "top 80%",
-                    },
-                }
-            );
-        });
-
-        // Animate timeline line for desktop
-        if (window.innerWidth >= 768) {
-            gsap.fromTo(
-                timelineRef.current,
-                { scaleX: 0 },
-                {
-                    scaleX: 1,
-                    transformOrigin: "left center",
-                    duration: 1.5,
-                    scrollTrigger: {
-                        trigger: timelineRef.current,
-                        start: "top 90%",
-                        end: "bottom 60%",
-                        scrub: 1,
-                    },
-                }
-            );
-        } else {
-            gsap.fromTo(
-                timelineRef.current,
-                { scaleY: 0 },
-                {
-                    scaleY: 1,
-                    transformOrigin: "top center",
-                    duration: 1.5,
-                    scrollTrigger: {
-                        trigger: timelineRef.current,
-                        start: "top 90%",
-                        end: "bottom 60%",
-                        scrub: 1,
-                    },
-                }
-            );
-        }
-    }, []);
-
     return (
-        <section className={style.container}>
-            <h2 className={style.heading}>How I Work</h2>
-            <div className={style.timeline} ref={timelineRef}>
-                {steps.map((step, index) => (
-                    <div
-                        key={index}
-                        className={style["timeline-item"]}
-                        ref={(el) => (itemsRef.current[index] = el)}
-                    >
-                        <div className={style["timeline-icon"]}>{step.icon}</div>
-                        <h3>{step.title}</h3>
-                        <p>{step.description}</p>
-                    </div>
-                ))}
+        <section className={style.process}>
+            <h2 className={style.heading}>My Development Process</h2>
+            <p className={style.subheading}>
+                A structured workflow I follow to build high-quality digital products.
+            </p>
+
+            <div className={style.wrapper}>
+                {/* Circular Flow */}
+                <div className={style.circleContainer}>
+                    <div className={style.ring} />
+
+                    {steps.map((step, index) => (
+                        <div
+                            key={index}
+                            className={`${style.step} ${active === index ? style.active : ""
+                                }`}
+                            style={{
+                                "--i": index,
+                                "--color": step.color
+                            }}
+                        >
+                            <div
+                                className={style.circle}
+                                onMouseEnter={() => setActive(index)}
+                                onMouseLeave={() => setActive(0)}
+                            >
+                                {step.icon}
+                            </div>
+                        </div>
+                    ))}
+                </div>
+
+                {/* Text Content */}
+                <div className={style.content}>
+                    {steps.map((step, index) => (
+                        <div
+                            key={index}
+                            className={`${style.textBlock} ${active === index ? style.textActive : ""
+                                }`}
+                        >
+                            <h3 style={{ color: step.color }}>{step.title}</h3>
+                            <p>{step.description}</p>
+                        </div>
+                    ))}
+                </div>
             </div>
         </section>
     );

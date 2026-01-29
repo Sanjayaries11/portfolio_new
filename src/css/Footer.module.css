@@ -4,7 +4,6 @@
     padding-top: 60px;
 }
 
-
 /* MAIN CONTAINER */
 .container {
     max-width: 1200px;
@@ -15,6 +14,7 @@
     gap: 40px;
 }
 
+/* Headings */
 .col h3 {
     color: var(--green);
     margin-bottom: 20px;
@@ -31,6 +31,7 @@
     margin-bottom: 20px;
 }
 
+/* Lists */
 .col ul {
     list-style: none;
     padding: 0;
@@ -50,6 +51,7 @@
     color: var(--blue);
 }
 
+/* Social Icons */
 .socials {
     display: flex;
     gap: 12px;
@@ -71,6 +73,7 @@
     background: var(--blue);
 }
 
+/* Contact info */
 .col p {
     display: flex;
     align-items: center;
@@ -97,4 +100,58 @@
     display: flex;
     justify-content: space-between;
     font-size: 14px;
+}
+
+/* RESPONSIVE MEDIA QUERIES */
+
+/* Tablets: 768px - 1024px */
+@media (max-width: 1024px) {
+    .container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+    }
+
+    .containerBottom {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        text-align: center;
+    }
+}
+
+/* Mobile: up to 767px */
+@media (max-width: 767px) {
+    .container {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .logo {
+        font-size: 24px;
+    }
+
+    .desc {
+        font-size: 14px;
+    }
+
+    .col h3 {
+        font-size: 16px;
+    }
+
+    .col ul li {
+        margin-bottom: 8px;
+    }
+
+    .socials a {
+        width: 32px;
+        height: 32px;
+    }
+
+    .containerBottom {
+        flex-direction: column;
+        align-items: center;
+        gap: 5px;
+        text-align: center;
+        font-size: 12px;
+    }
 }

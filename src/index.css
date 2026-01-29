@@ -31,7 +31,13 @@ body {
     width: 100%;
 }
 
-body.dark {
+/* Example: add padding-top equal to navbar height */
+.mainContent {
+    padding-top: 65px;
+}
+
+
+/* body.dark {
     --nav-bg: var(--black);
     background-color: var(--gray);
     color: var(--white);
@@ -41,4 +47,4 @@ body.light {
     --nav-bg: var(--white);
     background-color: var(--gray);
     color: var(--black);
-}
+} */
